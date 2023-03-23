@@ -5,7 +5,11 @@
 
 ### paper.pdf
 
-This file is the 
+This file is the written thesis.
+
+### app
+
+This directory contains the code of the application. To run it, open the **index.html** file in your browser.
 
 ## Appliacation
 
