@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head id="head">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="js/symbols.js"></script>
+    <script type="text/javascript" src="js/ui/showTab.js"></script>
+    <script type="text/javascript" src="js/ui/tabs/calculator/addKeyboardListeners.js"></script>
+    <script type="text/javascript" src="js/ui/tabs/calculator/ButtonFunctions.js"></script>
+    <script type="text/javascript" src="js/ui/tabs/calculator/generateCalculatorButtons.js"></script>
+    <script type="text/javascript" src="js/ui/tabs/definitions/generateDefinitions.js"></script>
+    <script type="text/javascript" src="js/ui/tabs/tables/generateTable.js"></script>
+    <script type="text/javascript" src="js/calculations/parenthesize.js"></script>
+    <script type="text/javascript" src="js/calculations/toRPN.js"></script>
+    <script type="text/javascript" src="js/calculations/generateBinaries.js"></script>
+    <script type="text/javascript" src="js/calculations/calculateBinaries.js"></script>
+    <script>
+        const shortcutsHints = {
+            "*": symbols.intersection,
+            "+": symbols.union,
+            "- / \\": symbols.difference,
+            "0": symbols.emptySet,
+            "8": symbols.implication,
+            "9": symbols.equivelance,
+            "[": symbols.inclusionSharp,
+            "]": symbols.inclusion,
+            ";": symbols.negInclusionSharp,
+            "'": symbols.negInclusion,
+        }
+
+        const generateShortcutsHints = () => {
+            const hintsDiv = document.getElementById('keyboard__shortcuts')
+            Object.keys(shortcutsHints).forEach(key => {
+                const hint = document.createElement('div')
+                hint.innerHTML = `${key}: ${shortcutsHints[key]}`
+                hintsDiv.appendChild(hint)
+            })
+        }
+
+        window.data = {}
+
+        window.onload = () => {
+            generateCalculatorButtons()
+            addKeyboardListeners()
+            generateShortcutsHints()
+        }
+
+        window.data.tableGenerated = false
+        window.data.colorized = false
+        window.data.showTrue = false
+        window.data.showFalse = false
+        window.data.tableZoom = 24
+        window.data.tableZoomStep = 2
+
+        function showCalculator() {
+            showTab('calculator')
+        }
+
+        function showTable() {
+            if (!window.data.tableGenerated) {
+                generateTable()
+                window.data.tableGenerated = true
+            }
+            showTab('table')
+        }
+
+        function showDefinitions() {
+            generateDefinitions()
+            showTab('definitions')
+        }
+
+        function showKeyboardShortcuts() {
+            document.getElementById('keyboard__shortcuts').classList.toggle('active')
+            document.getElementById('keyboard__shortcuts__button').classList.toggle('active')
+        }
+
+    </script>
+    <title>Set calculator</title>
+</head>
+
+<body>
+    <div id="center">
+        <div id="top__bar">
+            <button tabindex='-1' class="nav-button nav-button-current" id="nav__calculator" onclick="showCalculator()" disabled>Calculator</button>
+            <button tabindex='-1' class="nav-button" id="nav__table" onclick="showTable()" disabled>Table</button>
+            <button tabindex='-1' class="nav-button" id="nav__definitions" onclick="showDefinitions()">Definitions</button>
+        </div>
+
+        <div class="tab__nav__div">
+            <div id="tab__nav-calculator">
+                <div id="keyboard__shortcuts"></div>
+                <button tabindex='-1' class="nav-button" onclick="showKeyboardShortcuts()" id="keyboard__shortcuts__button">Show Keyboard Shortcuts</button>
+            </div>
+            <div id="tab__nav-table" class="hidden">
+                <button tabindex='-1' class="nav-button" onClick="ButtonFunctions.colorize()" id="colorize__button">Colorize</button>
+                <button tabindex='-1' class="nav-button" onClick="ButtonFunctions.showTrue()" id="show__true">Show true</button>
+                <button tabindex='-1' class="nav-button" onClick="ButtonFunctions.showFalse()" id="show__false">Show false</button>
+                <button tabindex='-1' class="nav-button" onClick="ButtonFunctions.zoomIn()">Zoom In</button>
+                <button tabindex='-1' class="nav-button" onClick="ButtonFunctions.zoomOut()">Zoom Out</button>
+                <button tabindex='-1' class="nav-button" onClick="ButtonFunctions.zoomReset()">Zoom Reset</button>
+            </div>
+            <div id="tab__nav-definitions" class="hidden">
+            </div>
+        </div>
+
+        <div id="app">
+            <div id="app__calculator" class="app-calculator">
+
+                <div class="app__inputs">
+                    <input class="app-input" id="app__input-display" autofocus></input>
+                    <input class="app-input hidden" id="app__input-rpn" disabled></input>
+                </div>
+
+                <div id="app__grid"></div>
+
+                <div class="app__inputs">
+                    <input class="app-input" id="app__output" disabled></input>
+                </div>
+            </div>
+
+            <div id="app__table" class="hidden"></div>
+
+            <div id="app__definitions" class="app-definitions hidden"></div>
+        </div>
+    </div>
+</body>
+
+</html>

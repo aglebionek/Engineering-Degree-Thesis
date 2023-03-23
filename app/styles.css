@@ -1,0 +1,289 @@
+@font-face {
+  font-family: 'Arial';
+  src: url("./arial.ttf");
+}
+
+:root {
+  --background-color-top-left: rgb(77, 83, 88);
+  --background-color-bottom-right: rgb(37, 43, 48);
+  --content-color: rgba(41, 44, 48, 0.8);
+  --element-background-color-light: rgb(45, 48, 52);
+  --element-background-color: rgb(35, 38, 42);
+  --element-background-color-disabled: rgb(25, 28, 32);
+  --element-background-color-dark: rgb(15, 18, 22);
+  --element-color-active: orange;
+  --font-color: rgb(206, 207, 208);
+  --font-color-disabled: rgb(106, 107, 108);
+  user-select: none;
+  font-family: Arial;
+}
+
+body {
+  margin: 0;
+}
+
+#center {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: linear-gradient(to bottom right, var(--background-color-top-left), var(--background-color-bottom-right));
+}
+
+#top__bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 5vh;
+  padding: 0px;
+  background-color: var(--content-color);
+  padding-top: 10px;
+}
+
+#top__bar > button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--font-color);
+}
+
+.app-calculator {
+  background-color: var(--content-color);
+  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.5);
+  display: block;
+  width: 600px;
+  margin: 5px;
+}
+
+#app__table {
+  font-size: 24px;
+  max-height: 600px;
+  overflow: auto;
+  max-width: 90vw;
+}
+
+.app__inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.app-input {
+  margin: 5px;
+  height: 35px;
+  font-size: 35px;
+  font-weight: bold;
+  color: white;
+  background-color: var(--element-background-color);
+  border: 1px solid black
+}
+
+.app-input:disabled {
+  background-color: var(--element-background-color-disabled);
+}
+
+#app__input-display:hover {
+  border: 1px solid var(--element-color-active);
+}
+
+#app__grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  height: 350px;
+  margin: 5px;
+}
+
+.app__grid-item {
+  text-align: center;
+  margin: 5px;
+  font-size: 30px;
+}
+
+.hidden {
+  display: none;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  border: 1px solid var(--font-color-disabled);
+  text-align: center;
+}
+
+.table-content {
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  letter-spacing: 0.8px;
+}
+
+.t {
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 1em;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-header {
+  background-color: var(--element-background-color-dark);
+  color: var(--font-color);
+}
+
+.lighter {
+  background-color: var(--element-background-color);
+}
+
+.darker {
+  background-color: var(--element-background-color-disabled);
+}
+
+.button {
+  background-color: var(--element-background-color);
+  color: white;
+  border: 1px solid black;
+}
+
+.button:enabled:hover {
+  color: var(--element-color-active);
+  border: 1px solid var(--element-color-active);
+}
+
+.nav-button {
+  background-color: var(--element-background-color);
+  color: var(--font-color);
+  border: 1px solid black;
+  width: fit-content;
+  height: 30px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.nav-button:disabled {
+  background-color: var(--element-background-color-disabled);
+  color: var(--font-color-disabled);
+  cursor: not-allowed;
+}
+
+.nav-button:enabled:hover {
+  color: var(--element-color-active);
+  border: 1px solid var(--element-color-active);
+}
+
+.nav-button-current:disabled {
+  background-color: var(--element-color-active);
+  color: black;
+}
+
+.tab__nav__div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.app-definitions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+.definitions-tables {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 600px;
+  flex-wrap: wrap;
+  padding: 10px;
+  background-color: var(--content-color);
+}
+
+.definitions-tables > div {
+  margin: 10px;
+  font-size: 20px;
+}
+
+#keyboard__shortcuts {
+  display: none;
+  position: absolute;
+  top: 17%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--element-background-color-light);
+  border: 1px solid #000;
+  color: var(--font-color);
+  font-size: 20px;
+}
+
+#keyboard__shortcuts > div {
+  padding: 5px;
+  border: 1px solid black;
+}
+
+#keyboard__shortcuts.active {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#keyboard__shortcuts__button:hover {
+  color: var(--element-color-active);
+  border: 1px solid var(--element-color-active);
+}
+
+#keyboard__shortcuts__button.active {
+  background-color: var(--element-color-active);
+  color: black;
+}
+
+#keyboard__shortcuts__button.active:hover {
+  background-color: var(--element-background-color);
+  color: var(--element-color-active);
+  border: 1px solid var(--element-color-active);
+}
+
+#show__true.active {
+  background-color: var(--element-color-active);
+  color: black;
+}
+
+#show__true.active:hover {
+  background-color: var(--element-background-color);
+  color: var(--element-color-active);
+  border: 1px solid var(--element-color-active);
+}
+
+#show__false.active {
+  background-color: var(--element-color-active);
+  color: black;
+}
+
+#show__false.active:hover {
+  background-color: var(--element-background-color);
+  color: var(--element-color-active);
+  border: 1px solid var(--element-color-active);
+}
+
+#colorize__button {
+  background-color: var(--element-background-color);
+  color: var(--font-color);
+  border: 1px solid black;
+}
+
+#colorize__button:hover {
+  color: var(--element-color-active);
+  border: 1px solid var(--element-color-active);
+}
+
+#colorize__button.active {
+  background-color: var(--element-color-active);
+  color: black;
+}
