@@ -1,21 +1,25 @@
 
 # Web application for proving tautologies in set theory
 
-## About this project and repository
+## About this repository
 
 ### paper.pdf
 
-This file is the written thesis.
+This file is the written thesis. Be warned, it's written in Polish.
+
+### LaTeX source 
+
+This directory contains all LaTeX code and resources used to write paper.
 
 ### app
 
 This directory contains the code of the application. To run it, open the **index.html** file in your browser.
 
-## Appliacation
-
 ## Paper
 
 ### Abstract
+
+**WARNING: The translation below was done automatically and thus might contain some errors.**
 
 Web application for proving tautologies in set theory
 The goal of this paper was to create a simple and intuitive tool for proving tautologies in set
