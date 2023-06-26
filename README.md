@@ -9,7 +9,7 @@ This file is the written thesis. Be warned, it's written in Polish.
 
 ### LaTeX source 
 
-This directory contains all LaTeX code and resources used to write paper.
+This directory contains all LaTeX code and resources used to write the paper.
 
 ### app
 
