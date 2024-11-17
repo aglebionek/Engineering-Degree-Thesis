@@ -15,6 +15,10 @@ This directory contains all LaTeX code and resources used to write the paper.
 
 This directory contains the code of the application. To run it, open the **index.html** file in your browser.
 
+### prolog
+
+This directory contains an implementation of the application in Prolog, and a README file with instructions on how to run it.
+
 ## Paper
 
 ### Abstract
